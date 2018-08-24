@@ -1,11 +1,11 @@
-package com.test.fun;
+package com.samples.fun;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Squares {
+public class MultiplicationTables {
 	public static void main(String args[]) {
 		long startTime = System.currentTimeMillis();
 		Scanner scanner = new Scanner(System.in);
@@ -13,21 +13,22 @@ public class Squares {
 		double correct = 0;
 		double incorrect = 0;
 		Random rand1 = new Random();
-		List<Integer> usedList = new ArrayList<Integer>();
+		Random rand2 = new Random();
 		while (true) {
-			int num = rand1.nextInt(20);
-			if (num < 2 | usedList.contains(num)) {
-				if (usedList.size()==18) {
+			int table = rand1.nextInt(20);
+			int upto = rand2.nextInt(20);
+			List<String> comboUsedList = new ArrayList<String>();
+			if (table < 2 | upto < 2 | comboUsedList.contains(Integer.toString(table) + "," + Integer.toString(upto))) {
+				if (comboUsedList.size() == 118) {
 					// exit
-					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Squares");
+					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Multiplication");
 				} else {
 					continue;
 				}
 			}
-			usedList.add(num);	
-		
-			System.out.println(sno + "). " + num + "x" + num + "=");
-			int ans = num * num;
+			comboUsedList.add(Integer.toString(table) + "," + Integer.toString(upto));
+			System.out.println(sno + "). " + table + "x" + upto + "=");
+			int ans = table * upto;
 			String userInput = scanner.nextLine();
 			int sol = 0;
 			try {
@@ -36,14 +37,13 @@ public class Squares {
 				// i know that it's not a number
 				if ("".equals(userInput) || !"exit".equalsIgnoreCase(userInput) || !userInput.contains("exit")) {
 					System.out.println("incorrect, answer is: " + ans);
-					incorrect++;
 					sno++;
 					continue;
 				}
 			}
 
 			if ("exit".equalsIgnoreCase(userInput) || userInput.contains("exit")) {
-				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Addition");
+				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Multiplication");
 			}
 			if (sol == ans) {
 				System.out.println("correct");

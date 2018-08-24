@@ -1,11 +1,11 @@
-package com.test.fun;
+package com.samples.fun;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class TwoDigitAddition {
+public class MultiplicationTables20 {
 	public static void main(String args[]) {
 		long startTime = System.currentTimeMillis();
 		Scanner scanner = new Scanner(System.in);
@@ -14,21 +14,21 @@ public class TwoDigitAddition {
 		double incorrect = 0;
 		Random rand1 = new Random();
 		Random rand2 = new Random();
-		List<String> comboUsedList = new ArrayList<String>();
 		while (true) {
-			int i = rand1.nextInt(110);
-			int j = rand2.nextInt(110);
-			if (i < 2 | j < 2 | comboUsedList.contains(Integer.toString(i) + "," + Integer.toString(j))) {
+			int table = rand1.nextInt(20);
+			int upto = rand2.nextInt(20);
+			List<String> comboUsedList = new ArrayList<String>();
+			if (table < 12 | upto < 12 | comboUsedList.contains(Integer.toString(table) + "," + Integer.toString(upto))) {
 				if (comboUsedList.size() == 118) {
 					// exit
-					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Addition");
+					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Adv. Multiplication");
 				} else {
 					continue;
 				}
 			}
-			comboUsedList.add(Integer.toString(i) + "," + Integer.toString(j));
-			System.out.println(sno + "). " + i + "+" + j + "=");
-			int ans = i + j;
+			comboUsedList.add(Integer.toString(table) + "," + Integer.toString(upto));
+			System.out.println(sno + "). " + table + "x" + upto + "=");
+			int ans = table * upto;
 			String userInput = scanner.nextLine();
 			int sol = 0;
 			try {
@@ -43,7 +43,7 @@ public class TwoDigitAddition {
 			}
 
 			if ("exit".equalsIgnoreCase(userInput) || userInput.contains("exit")) {
-				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Addition");
+				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Adv. Multiplication");
 			}
 			if (sol == ans) {
 				System.out.println("correct");

@@ -1,4 +1,4 @@
-package com.test.fun;
+package com.samples.fun;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

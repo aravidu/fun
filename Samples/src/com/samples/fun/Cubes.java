@@ -1,11 +1,9 @@
-package com.test.fun;
+package com.samples.fun;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class TwoDigitSubtraction {
+public class Cubes {
 	public static void main(String args[]) {
 		long startTime = System.currentTimeMillis();
 		Scanner scanner = new Scanner(System.in);
@@ -13,22 +11,13 @@ public class TwoDigitSubtraction {
 		double correct = 0;
 		double incorrect = 0;
 		Random rand1 = new Random();
-		Random rand2 = new Random();
-		List<String> comboUsedList = new ArrayList<String>();
 		while (true) {
-			int i = rand1.nextInt(110);
-			int j = rand2.nextInt(110);
-			if ((i < 2 && i < j) | (i >= 2 && i < j) | comboUsedList.contains(Integer.toString(i) + "," + Integer.toString(j))) {
-				if (comboUsedList.size() == 118) {
-					// exit
-					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Subtraction");
-				} else {
-					continue;
-				}
+			int num = rand1.nextInt(20);
+			if (num < 2) {
+				continue;
 			}
-			comboUsedList.add(Integer.toString(i) + "," + Integer.toString(j));
-			System.out.println(sno + "). " + i + "-" + j + "=");
-			int ans = i - j;
+			System.out.println(sno + "). " + num + "x" + num + "x" + num + "=");
+			int ans = num * num * num;
 			String userInput = scanner.nextLine();
 			int sol = 0;
 			try {
@@ -37,13 +26,14 @@ public class TwoDigitSubtraction {
 				// i know that it's not a number
 				if ("".equals(userInput) || !"exit".equalsIgnoreCase(userInput) || !userInput.contains("exit")) {
 					System.out.println("incorrect, answer is: " + ans);
+					incorrect++;
 					sno++;
 					continue;
 				}
 			}
 
 			if ("exit".equalsIgnoreCase(userInput) || userInput.contains("exit")) {
-				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Subtraction");
+				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Cubes");
 			}
 			if (sol == ans) {
 				System.out.println("correct");

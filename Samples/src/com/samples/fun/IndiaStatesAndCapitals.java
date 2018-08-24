@@ -1,13 +1,17 @@
-package com.test.fun;
+package com.samples.fun;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
-public class USStatesAndCapitals {
+public class IndiaStatesAndCapitals {
 
 	private static List<String> list = new ArrayList<String>();
 
@@ -35,13 +39,13 @@ public class USStatesAndCapitals {
 			Map<Integer, String> cityChoices = new HashMap<Integer, String>();
 
 			int countryNum = 0;
-			int index = 50;
+			int index = 36;
 			// get countries/capitals
 			while (true) {
-				countryNum = rand2.nextInt(50);
+				countryNum = rand2.nextInt(36);
 				if (usedCountries1.contains(countryNum)) {
 					if (usedCountries1.size()==index) {
-						CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "US States & Capitals");
+						computeStatsAndExit(sno, correct, incorrect, startTime, scanner);
 					}
 					continue;
 				} else {
@@ -68,7 +72,7 @@ public class USStatesAndCapitals {
 			String userInput = scanner.nextLine();
 
 			if ("exit".equalsIgnoreCase(userInput) || userInput.contains("exit")) {
-				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "US States & Capitals");
+				computeStatsAndExit(sno, correct, incorrect, startTime, scanner);
 			}
 
 			if (ans.equalsIgnoreCase(userInput)) {
@@ -82,6 +86,22 @@ public class USStatesAndCapitals {
 			}
 			sno++;
 		}
+	}
+
+	private static void computeStatsAndExit(int sno, double correct, double incorrect, long startTime,
+			Scanner scanner) {
+		scanner.close();
+		long elapsed = System.currentTimeMillis() - startTime;
+		long elapsedInSec = elapsed / 1000;
+		double timeInMin = elapsedInSec/60d;
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setRoundingMode(RoundingMode.CEILING);
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyy");
+		System.out.println();
+		System.out.println(sdf.format(new Date()) + "\tMultiplication\t" + df.format(timeInMin) + "\t"
+				+ (sno - 1) + "\t" + Math.round(correct) + "\t" + Math.round(incorrect) + "\t"
+				+ Math.round((correct / (sno - 1)) * 100) + " %");
+		System.exit(1);
 	}
 
 	private static String poseQuestion(int sno, String country, Map<Integer, String> choiceMap, int[] choiceArr) {
@@ -151,56 +171,42 @@ public class USStatesAndCapitals {
 	}
 
 	private static void setMap1() {
-		list.add("Alabama,Montgomery ");
-		list.add("Alaska,Juneau ");
-		list.add("Arizona,Phoenix ");
-		list.add("Arkansas,Little Rock ");
-		list.add("California,Sacramento ");
-		list.add("Colorado,Denver ");
-		list.add("Connecticut,Hartford ");
-		list.add("Delaware,Dover ");
-		list.add("Florida,Tallahassee ");
-		list.add("Georgia,Atlanta ");
-		list.add("Hawaii,Honolulu ");
-		list.add("Idaho,Boise ");
-		list.add("Illinois,Springfield ");
-		list.add("Indiana,Indianapolis ");
-		list.add("Iowa,Des Moines ");
-		list.add("Kansas,Topeka ");
-		list.add("Kentucky,Frankfort ");
-		list.add("Louisiana,Baton Rouge ");
-		list.add("Maine,Augusta ");
-		list.add("Maryland,Annapolis ");
-		list.add("Massachusetts,Boston ");
-		list.add("Michigan,Lansing ");
-		list.add("Minnesota,St. Paul ");
-		list.add("Mississippi,Jackson ");
-		list.add("Missouri,Jefferson City ");
-		list.add("Montana,Helena");
-		list.add("Nebraska,Lincoln");
-		list.add("Nevada,Carson City");
-		list.add("New Hampshire,Concord");
-		list.add("New Jersey,Trenton");
-		list.add("New Mexico,Santa Fe");
-		list.add("New York,Albany");
-		list.add("North Carolina,Raleigh");
-		list.add("North Dakota,Bismarck");
-		list.add("Ohio,Columbus");
-		list.add("Oklahoma,Oklahoma City");
-		list.add("Oregon,Salem");
-		list.add("Pennsylvania,Harrisburg");
-		list.add("Rhode Island,Providence");
-		list.add("South Carolina,Columbia");
-		list.add("South Dakota,Pierre");
-		list.add("Tennessee,Nashville");
-		list.add("Texas,Austin");
-		list.add("Utah,Salt Lake City");
-		list.add("Vermont,Montpelier");
-		list.add("Virginia,Richmond");
-		list.add("Washington,Olympia");
-		list.add("West Virginia,Charleston");
-		list.add("Wisconsin,Madison");
-		list.add("Wyoming,Cheyenne");
+		list.add("Andhra Pradesh,Hyderabad");
+		list.add("Arunachal Pradesh,Itanagar");
+		list.add("Assam,Dispur");
+		list.add("Bihar,Patna");
+		list.add("Chhattisgarh,Raipur");
+		list.add("Goa,Panaji");
+		list.add("Gujarat,Gandhinagar");
+		list.add("Haryana,Chandigarh");
+		list.add("Himachal Pradesh,Shimla");
+		list.add("Jammu and Kashmir,Srinagar (summer); Jammu (winter)");
+		list.add("Jharkhand,Ranchi");
+		list.add("Karnataka,Bengaluru (formerly Bangalore)");
+		list.add("Kerala,Thiruvananthapuram");
+		list.add("Madhya Pradesh,Bhopal");
+		list.add("Maharashtra,Mumbai");
+		list.add("Manipur,Imphal");
+		list.add("Meghalaya,Shillong");
+		list.add("Mizoram,Aizawl");
+		list.add("Nagaland,Kohima");
+		list.add("Odisha,Bhubaneswar");
+		list.add("Punjab,Chandigarh");
+		list.add("Rajasthan ,Jaipur");
+		list.add("Sikkim ,Gangtok");
+		list.add("Tamil Nadu ,Chennai");
+		list.add("Telangana ,Hyderabad");
+		list.add("Tripura,Agartala");
+		list.add("Uttar Pradesh,Lucknow");
+		list.add("Uttarakhand ,Dehradun");
+		list.add("West Bengal ,Kolkata");
+		list.add("Andaman and Nicobar Islands,Port Blair");
+		list.add("Chandigarh,Chandigarh");
+		list.add("Dadar and Nagar Haveli,Silvassa");
+		list.add("Daman and Diu,Daman");
+		list.add("Delhi ,Delhi");
+		list.add("Lakshadweep ,Kavaratti");
+		list.add("Puducherry (Pondicherry),Pondicherry");
 	}
 
 }
