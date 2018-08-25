@@ -16,8 +16,8 @@ public class TwoDigitSubtraction {
 		Random rand2 = new Random();
 		List<String> comboUsedList = new ArrayList<String>();
 		while (true) {
-			int i = rand1.nextInt(110);
-			int j = rand2.nextInt(110);
+			int i = rand1.nextInt(200);
+			int j = rand2.nextInt(200);
 			if ((i < 2 && i < j) | (i >= 2 && i < j) | comboUsedList.contains(Integer.toString(i) + "," + Integer.toString(j))) {
 				if (comboUsedList.size() == 118) {
 					// exit

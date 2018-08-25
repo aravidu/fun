@@ -18,7 +18,7 @@ public class MultiplicationTables20 {
 			int table = rand1.nextInt(20);
 			int upto = rand2.nextInt(20);
 			List<String> comboUsedList = new ArrayList<String>();
-			if (table < 12 | upto < 12 | comboUsedList.contains(Integer.toString(table) + "," + Integer.toString(upto))) {
+			if (table < 11 | upto < 11 | comboUsedList.contains(Integer.toString(table) + "," + Integer.toString(upto))) {
 				if (comboUsedList.size() == 118) {
 					// exit
 					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Adv. Multiplication");
