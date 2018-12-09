@@ -15,7 +15,7 @@ public class TwoDigitDivision {
 		Random rand1 = new Random();
 		Random rand2 = new Random();
 		while (true) {
-			int dividend = rand1.nextInt(99);
+			int dividend = rand1.nextInt(200);
 			//System.out.println("dividend: "+dividend);
 			int divisor = rand2.nextInt(20);
 			//System.out.println("divisor: "+divisor);
