@@ -32,10 +32,10 @@ public class WordsAndMeaningsMC {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			String word = null;
-			Map<Integer, String> wordChoices = new HashMap<Integer, String>();
+			Map<Integer, String> multiChoiceMap = new HashMap<Integer, String>();
 
 			int wordNum = 0;
-			int index = 815;
+			int index = 815;//815 total
 			// get list
 			while (true) {
 				wordNum = rand2.nextInt(index);
@@ -49,7 +49,7 @@ public class WordsAndMeaningsMC {
 					break;
 				}
 			}
-			word = getChoicesForWord(list, wordChoices, wordNum, index);
+			word = getChoicesForWord(list, multiChoiceMap, wordNum, index);
 		
 
 			// randomize 4 choices
@@ -62,7 +62,7 @@ public class WordsAndMeaningsMC {
 			}
 
 			// present the question with 4 choices
-			String ans = poseQuestion(sno, word, wordChoices, choiceArr);
+			String ans = poseQuestion(sno, word, multiChoiceMap, choiceArr);
 
 			String userInput = scanner.nextLine();
 
