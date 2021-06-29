@@ -14,12 +14,14 @@ public class MultiplicationTables {
 		double incorrect = 0;
 		Random rand1 = new Random();
 		Random rand2 = new Random();
+		List<String> comboUsedList = new ArrayList<String>();
 		while (true) {
 			int table = rand1.nextInt(20);
 			int upto = rand2.nextInt(20);
-			List<String> comboUsedList = new ArrayList<String>();
-			if (table < 2 | upto < 2 | comboUsedList.contains(Integer.toString(table) + "," + Integer.toString(upto))) {
-				if (comboUsedList.size() == 118) {
+			// System.out.println(comboUsedList.toString());
+			if (table < 11 | upto < 2 | comboUsedList.contains(Integer.toString(table) + "," + Integer.toString(upto))) {
+				// if (comboUsedList.size() == 324) { // from 2..19 upto 19 table = 324 entries in list
+				if (comboUsedList.size() == 162) { // from 11..19 upto 19 table = 162 entries in list
 					// exit
 					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Multiplication");
 				} else {
