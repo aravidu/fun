@@ -27,7 +27,7 @@ public class MultiplicationTables {
 					// exit
 					if (wrongAnswersList.size() != 0) {
 						System.out.println();
-						System.out.println("Great job!! But.. just before we end it all, here are the questions you got wrong.. with correct answers: ");
+						System.out.println("Great job!! But.. before we end it all, here are the questions you got wrong.. with correct answers: ");
 						for (String item : wrongAnswersList) {
 							System.out.println(item);
 						}
@@ -57,7 +57,7 @@ public class MultiplicationTables {
 			if ("exit".equalsIgnoreCase(userInput) || userInput.contains("exit")) {
 				if (wrongAnswersList.size() != 0) {
 					System.out.println();
-					System.out.println("Great job!! But.. just before we end it all, here are the questions you got wrong.. with correct answers: ");
+					System.out.println("Great job!! But.. before we end it all, here are the questions you got wrong.. with correct answers: ");
 					for (String item : wrongAnswersList) {
 						System.out.println(item);
 					}
