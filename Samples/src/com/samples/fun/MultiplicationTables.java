@@ -1,6 +1,7 @@
 package com.samples.fun;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -15,6 +16,7 @@ public class MultiplicationTables {
 		Random rand1 = new Random();
 		Random rand2 = new Random();
 		List<String> comboUsedList = new ArrayList<String>();
+		List<String> wrongAnswersList = new ArrayList<String>();
 		while (true) {
 			int table = rand1.nextInt(20);
 			int upto = rand2.nextInt(20);
@@ -23,6 +25,13 @@ public class MultiplicationTables {
 				// if (comboUsedList.size() == 324) { // from 2..19 upto 19 table = 324 entries in list
 				if (comboUsedList.size() == 162) { // from 11..19 upto 19 table = 162 entries in list
 					// exit
+					if (wrongAnswersList.size() != 0) {
+						System.out.println();
+						System.out.println("Great job!! But.. just before we end it all, here are the questions you got wrong.. with correct answers: ");
+						for (String item : wrongAnswersList) {
+							System.out.println(item);
+						}
+					}
 					CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Multiplication");
 				} else {
 					continue;
@@ -38,6 +47,7 @@ public class MultiplicationTables {
 			} catch (NumberFormatException e) {
 				// i know that it's not a number
 				if ("".equals(userInput) || !"exit".equalsIgnoreCase(userInput) || !userInput.contains("exit")) {
+					wrongAnswersList.add(Integer.toString(table) + "x" + Integer.toString(upto) + "="+ (table * upto));
 					System.out.println("incorrect, answer is: " + ans);
 					sno++;
 					continue;
@@ -45,6 +55,13 @@ public class MultiplicationTables {
 			}
 
 			if ("exit".equalsIgnoreCase(userInput) || userInput.contains("exit")) {
+				if (wrongAnswersList.size() != 0) {
+					System.out.println();
+					System.out.println("Great job!! But.. just before we end it all, here are the questions you got wrong.. with correct answers: ");
+					for (String item : wrongAnswersList) {
+						System.out.println(item);
+					}
+				}
 				CommUtil.computeStatsAndExit(startTime, scanner, sno, correct, incorrect, "Multiplication");
 			}
 			if (sol == ans) {
@@ -52,6 +69,7 @@ public class MultiplicationTables {
 				correct++;
 			} else {
 				System.out.println("incorrect, answer is: " + ans);
+				wrongAnswersList.add(Integer.toString(table) + "x" + Integer.toString(upto) + "="+ (table * upto));
 				incorrect++;
 			}
 			sno++;
